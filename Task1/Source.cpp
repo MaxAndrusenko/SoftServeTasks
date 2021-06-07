@@ -6,7 +6,7 @@ typedef const char* string;
 
 bool Strcmp(string str1, string str2);
 
-void StringInit(char*** list)
+void StringInit(char*** list) //Stepan: this function means to allocate memory for 'list'
 {
     if (*list == NULL)
     {
@@ -18,17 +18,17 @@ void StringInit(char*** list)
     }
 }
 
-void StringListAdd(char*** list, string str)
+void StringListAdd(char*** list, string str) 
 {
 
     char** next;
     next = (char**)calloc(2, sizeof(char*));
-    next[0] = (char*)calloc(strlen(str) + 1, sizeof(char*));
+    next[0] = (char*)calloc(strlen(str) + 1, sizeof(char*)); //Stepan: There might be dereferencing of a potential null pointer 'next'. Check lines: 25, 26.
     next[1] = NULL;
 
     if (next[0] != NULL)
     {
-       strcpy_s(next[0], sizeof(char*) * (strlen(str) + 1) ,str);
+       strcpy_s(next[0], sizeof(char*) * (strlen(str) + 1) ,str); // Stepan: it needs to verify if str is not emty or NULL
     }
 
     if (*list == NULL)
@@ -49,7 +49,7 @@ void StringListAdd(char*** list, string str)
 
 }
 
-void StringListRemove(char*** list, string str) {
+void StringListRemove(char*** list, string str) { // Stepan: it needs to verify if str is not emty or NULL and if 'list' is not NULL
 
     char** current;
     char** previous;
@@ -90,7 +90,7 @@ void StringListRemove(char*** list, string str) {
     }
 }
 
-int StringListSize(char*** list) {
+int StringListSize(char*** list) { // Stepan: it needs to verify if 'list' is not NULL first
 
     char** current = *list;
     int Size = 0;
@@ -105,7 +105,7 @@ int StringListSize(char*** list) {
 
 }
 
-int StringListIndexOf(char*** list, string str) {
+int StringListIndexOf(char*** list, string str) {  //Stepan: Non-void function should return a value.
     
     char** current = *list;
     int counter = 0;
@@ -127,7 +127,7 @@ int StringListIndexOf(char*** list, string str) {
 
 }
 
-void StringListDestroy(char*** list) {
+void StringListDestroy(char*** list) { // Stepan: it needs to verify if 'list' is not NULL first
 
     char** previous = *list;
     char** current = *list;
