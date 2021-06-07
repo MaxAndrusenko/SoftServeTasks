@@ -21,15 +21,15 @@ public:
 
 	std::string GetType();
 
-	int ToInt();
+	int ToInt(); //Stepan: Please make this method as const
 
-	char ToChar();
+	char ToChar(); //Stepan: Please make this method as const
 
-	bool ToBool();
+	bool ToBool(); //Stepan: Please make this method as const
 
-	double ToDouble();
+	double ToDouble(); //Stepan: Please make this method as const
 
-	float ToFloat();
+	float ToFloat(); //Stepan: Please make this method as const
 
 	AnyType& operator =(const AnyType& other) {
 		if (this == &other)
