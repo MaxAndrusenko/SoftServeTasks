@@ -19,7 +19,7 @@ void AnyType::Swap(AnyType& other) {
 }
 
 
-std::string AnyType::GetType() {
+std::string AnyType::GetType() {  //Stepan: Please make this method as const
 
 	return type;
 }
